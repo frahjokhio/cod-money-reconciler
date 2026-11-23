@@ -1,43 +1,90 @@
-# COD Ledger — Demo Quickstart & Walkthrough
+# COD Money Reconciler (COD Ledger)
 
-A visual frontend prototype for Cash on Delivery (COD) reconciliation for Pakistani e-commerce merchants.
+A polished, lightweight **Cash on Delivery (COD) reconciliation tool** designed for online sellers and e-commerce merchants in Pakistan.
 
-## How to View the Demo
-
-Simply double-click or open **`index.html`** in any web browser (Google Chrome, Microsoft Edge, etc.):
-- Direct file path: `file:///C:/Users/HP/.gemini/antigravity/scratch/cod-ledger-demo/index.html`
-
-Alternatively, you can run a local server:
-```bash
-python -m http.server 3000
-```
-Then visit `http://localhost:3000`.
+Online merchants receive payments through multiple courier companies (TCS, Leopards, PostEx, etc.). This dashboard gives sellers a clear, single view to compare internal order invoices with courier statement payouts, automatically flag payment shortages, and track pending settlements.
 
 ---
 
-## 60–90 Second Demo Screen Recording Script
+## ⚡ Quick Start
 
-1. **Introduction:**
-   > *"Pakistani online merchants receive bulk COD payments through multiple courier companies like TCS and Leopards. It's often painful to track which shipments have been settled, which payouts are pending, and where courier deductions create mismatches."*
+No build step, Node, or server required! 
 
-2. **Summary Metrics (Point to Top 4 Cards):**
-   - **Total COD Expected:** Rs 245,000 across active partner accounts.
-   - **Received:** Rs 182,500 (74.5% cleared to bank).
-   - **Pending Settlement:** Rs 42,500 currently in courier payout transit.
-   - **Discrepancies:** 3 flagged orders requiring merchant audit.
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/frahjokhio/cod-money-reconciler.git
+   cd cod-money-reconciler
+   ```
 
-3. **Status Filter Demonstration:**
-   - Click the **Pending** pill to isolate the Rs 42,500 waiting on TCS and Leopards.
-   - Click the **Mismatch** pill to spotlight orders with shortfalls (e.g. `#COD-1046` with Rs 500 variance, `#COD-1043` with Rs 200 variance).
-   - Click **All** to return to the full ledger.
+2. **Run the app:**
+   * **Option 1:** Simply double-click **`index.html`** to open it directly in any modern web browser (Chrome, Edge, Firefox, Safari).
+   * **Option 2:** Run a local lightweight HTTP server:
+     ```bash
+     # Python 3
+     python -m http.server 3000
 
-4. **Live Search Filter:**
-   - In the search bar, type `Khan` or `#COD-1044` to demonstrate instant customer and order lookup.
+     # Node (npx)
+     npx serve .
+     ```
+     Then open `http://localhost:3000` in your browser.
 
-5. **Courier Statement Import:**
-   - Click **Import Courier CSV**.
-   - Either select `sample-tcs-courier-statement.csv` or click **"Load Statement & Reconcile"**.
-   - Note the confirmation toast: *"Courier statement imported successfully. 6 records ready to reconcile."*
+---
 
-6. **Closing:**
-   > *"COD Ledger gives Pakistani merchants a unified, reliable ledger to verify every rupee owed by couriers and resolve discrepancies before they hurt cash flow."*
+## 🎯 Key Features
+
+* **Automated Reconciliation Math:** Compares order invoice amounts against courier settlement deposits. If a courier underpays, the app automatically flags it as **Mismatch** (with the exact deficit highlighted in red).
+* **Dynamic Client-Side CSV Import:** Upload any courier statement (`.csv`). The app instantly parses all records, incorporates new customers, and recalculates totals on the fly.
+* **100% Private & Offline:** All parsing, matching, and metric calculations run entirely client-side inside your browser. No data or contact details are sent to external servers.
+* **Executive Summary Cards:**
+  * **Total COD Expected:** Total gross revenue expected from shipments.
+  * **Received:** Total confirmed payouts deposited into the bank account (with settlement percentage).
+  * **Pending Settlement:** Shipments currently inside courier payout cycles.
+  * **Discrepancies:** Count of mismatched orders requiring seller dispute, along with total rupee shortfall.
+* **Live Status Filters & Search:** Instantly filter orders by status (*All*, *Settled*, *Pending*, *Mismatch*) or search in real time by Order ID, Customer Name, or Courier.
+
+---
+
+## 📁 Sample CSV Format
+
+The reconciler accepts standard courier settlement CSV exports. A sample file is included in the root directory: [`cod-courier-statement-sample.csv`](cod-courier-statement-sample.csv).
+
+| AWB_Number | Order_ID | Customer_Name | Courier | Order_Amount | Courier_Settled | Difference | Status |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| `TCS-89214701` | `#COD-1048` | Ayesha Khan | TCS | 4500 | 1500 | 3000 | Mismatch |
+| `LBN-33918202` | `#COD-1047` | Ahmed Ali | Leopards | 3200 | 0 | 3200 | Pending |
+| `TCS-89214703` | `#COD-1046` | Sara Malik | TCS | 5000 | 4500 | 500 | Mismatch |
+| `LBN-33918204` | `#COD-1045` | Bilal Shah | Leopards | 2800 | 2800 | 0 | Settled |
+
+---
+
+## 🎙️ 60–90 Second Screen Recording Script
+
+Use this structured walkthrough for quick product demos or video pitches:
+
+1. **The Problem (0:00–0:15):**  
+   *"Online merchants in Pakistan receive bulk COD disbursements through multiple courier companies. Without automated reconciliation, it is difficult to spot unpaid parcels or courier deductions."*
+2. **Dashboard Overview (0:15–0:30):**  
+   *"The COD Ledger dashboard instantly highlights critical numbers: Total Expected COD, money cleared to bank, amounts pending in courier payout cycles, and payment discrepancies."*
+3. **Filtering Discrepancies (0:30–0:50):**  
+   * Click **Pending** to view shipments awaiting payout.
+   * Click **Mismatch** to spotlight shortfalls (e.g. order `#COD-1048` where TCS deposited Rs 1,500 instead of Rs 4,500, creating a Rs 3,000 deficit).
+4. **CSV Statement Import (0:50–1:15):**  
+   * Click **Import Courier CSV** and upload a settlement file.
+   * Point out the real-time recalculation of summary cards and new customer entries appearing in the ledger.
+5. **Closing (1:15–1:25):**  
+   *"COD Ledger provides merchants with a single, clear source of truth to protect cash flow and verify every rupee owed."*
+
+---
+
+## 🛠️ Built With
+
+* HTML5 & Modern Vanilla JavaScript (ES6+)
+* [Tailwind CSS CDN](https://tailwindcss.com/)
+* [Lucide Icons](https://lucide.dev/)
+* Inter Font by Google Fonts
+
+---
+
+## 📄 License
+
+MIT License — Feel free to use and adapt this project for your own store or portfolio.
