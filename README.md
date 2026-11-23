@@ -1,14 +1,39 @@
-# COD Money Reconciler (COD Ledger)
+# COD Money Reconciler
 
-A polished, lightweight **Cash on Delivery (COD) reconciliation tool** designed for online sellers and e-commerce merchants in Pakistan.
+An automated **Cash on Delivery (COD) reconciliation dashboard** built for e-commerce sellers and direct-to-consumer (D2C) brands.
 
-Online merchants receive payments through multiple courier companies (TCS, Leopards, PostEx, etc.). This dashboard gives sellers a clear, single view to compare internal order invoices with courier statement payouts, automatically flag payment shortages, and track pending settlements.
+Online merchants operating in emerging markets rely heavily on cash-on-delivery payments collected through third-party logistics (3PL) partners (such as TCS, Leopards, and PostEx). Managing payouts across disparate courier statements often leads to unnoticed deductions, delayed settlements, and unaccounted revenue leakage. 
+
+**COD Money Reconciler** solves this problem by providing merchants with a unified ledger to verify courier deposits against merchant invoices, spotlight payment shortfalls, and monitor cash flow in real time.
 
 ---
 
-## ⚡ Quick Start
+## 🚀 Features
 
-No build step, Node, or server required! 
+* **Automated Reconciliation Engine:** Real-time mathematical comparison between invoice amounts and courier-reported payouts. Any variance or short-settlement is instantly flagged with status indicators and calculated shortfalls.
+* **Dynamic CSV Statement Import:** Seamlessly parses courier settlement statement exports (`.csv`). Automatically extracts orders, updates settlement statuses, maps new customer records, and dynamically updates dashboard analytics.
+* **Executive Financial Metrics:**
+  * **Total COD Expected:** Gross outstanding revenue expected across logistics partners.
+  * **Realized Settlements:** Total cleared funds received in merchant accounts, with settlement percentage.
+  * **In-Transit / Pending:** Capital currently locked inside courier disbursement cycles.
+  * **Discrepancy Audit:** Immediate visibility into mismatched transactions requiring courier dispute, including total financial shortfall.
+* **Instant Filtering & Search:** Search by Order ID, Customer Name, or Courier Partner with real-time status segmentation (*All*, *Settled*, *Pending*, *Mismatch*).
+* **Privacy-First Architecture:** 100% client-side computation. All file parsing, matching, and metric calculations run entirely within the browser, ensuring customer and transaction data never leaves the client machine.
+
+---
+
+## 🛠️ Tech Stack
+
+* **Frontend:** Modern Vanilla JavaScript (ES6+), HTML5
+* **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+* **Icons:** [Lucide Icons](https://lucide.dev/)
+* **Typography:** Inter by Google Fonts
+
+---
+
+## 💻 Getting Started
+
+This application requires zero build steps or external dependencies.
 
 1. **Clone the repository:**
    ```bash
@@ -16,75 +41,31 @@ No build step, Node, or server required!
    cd cod-money-reconciler
    ```
 
-2. **Run the app:**
-   * **Option 1:** Simply double-click **`index.html`** to open it directly in any modern web browser (Chrome, Edge, Firefox, Safari).
-   * **Option 2:** Run a local lightweight HTTP server:
+2. **Launch:**
+   * Open `index.html` directly in any modern web browser, or
+   * Serve locally using your preferred HTTP server:
      ```bash
-     # Python 3
      python -m http.server 3000
-
-     # Node (npx)
-     npx serve .
      ```
-     Then open `http://localhost:3000` in your browser.
+     Navigate to `http://localhost:3000`.
 
 ---
 
-## 🎯 Key Features
+## 📋 Statement Format
 
-* **Automated Reconciliation Math:** Compares order invoice amounts against courier settlement deposits. If a courier underpays, the app automatically flags it as **Mismatch** (with the exact deficit highlighted in red).
-* **Dynamic Client-Side CSV Import:** Upload any courier statement (`.csv`). The app instantly parses all records, incorporates new customers, and recalculates totals on the fly.
-* **100% Private & Offline:** All parsing, matching, and metric calculations run entirely client-side inside your browser. No data or contact details are sent to external servers.
-* **Executive Summary Cards:**
-  * **Total COD Expected:** Total gross revenue expected from shipments.
-  * **Received:** Total confirmed payouts deposited into the bank account (with settlement percentage).
-  * **Pending Settlement:** Shipments currently inside courier payout cycles.
-  * **Discrepancies:** Count of mismatched orders requiring seller dispute, along with total rupee shortfall.
-* **Live Status Filters & Search:** Instantly filter orders by status (*All*, *Settled*, *Pending*, *Mismatch*) or search in real time by Order ID, Customer Name, or Courier.
+The reconciler accepts standard courier settlement CSV exports. A sample template is provided in [`cod-courier-statement-sample.csv`](cod-courier-statement-sample.csv):
 
----
-
-## 📁 Sample CSV Format
-
-The reconciler accepts standard courier settlement CSV exports. A sample file is included in the root directory: [`cod-courier-statement-sample.csv`](cod-courier-statement-sample.csv).
-
-| AWB_Number | Order_ID | Customer_Name | Courier | Order_Amount | Courier_Settled | Difference | Status |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| `TCS-89214701` | `#COD-1048` | Ayesha Khan | TCS | 4500 | 1500 | 3000 | Mismatch |
-| `LBN-33918202` | `#COD-1047` | Ahmed Ali | Leopards | 3200 | 0 | 3200 | Pending |
-| `TCS-89214703` | `#COD-1046` | Sara Malik | TCS | 5000 | 4500 | 500 | Mismatch |
-| `LBN-33918204` | `#COD-1045` | Bilal Shah | Leopards | 2800 | 2800 | 0 | Settled |
-
----
-
-## 🎙️ 60–90 Second Screen Recording Script
-
-Use this structured walkthrough for quick product demos or video pitches:
-
-1. **The Problem (0:00–0:15):**  
-   *"Online merchants in Pakistan receive bulk COD disbursements through multiple courier companies. Without automated reconciliation, it is difficult to spot unpaid parcels or courier deductions."*
-2. **Dashboard Overview (0:15–0:30):**  
-   *"The COD Ledger dashboard instantly highlights critical numbers: Total Expected COD, money cleared to bank, amounts pending in courier payout cycles, and payment discrepancies."*
-3. **Filtering Discrepancies (0:30–0:50):**  
-   * Click **Pending** to view shipments awaiting payout.
-   * Click **Mismatch** to spotlight shortfalls (e.g. order `#COD-1048` where TCS deposited Rs 1,500 instead of Rs 4,500, creating a Rs 3,000 deficit).
-4. **CSV Statement Import (0:50–1:15):**  
-   * Click **Import Courier CSV** and upload a settlement file.
-   * Point out the real-time recalculation of summary cards and new customer entries appearing in the ledger.
-5. **Closing (1:15–1:25):**  
-   *"COD Ledger provides merchants with a single, clear source of truth to protect cash flow and verify every rupee owed."*
-
----
-
-## 🛠️ Built With
-
-* HTML5 & Modern Vanilla JavaScript (ES6+)
-* [Tailwind CSS CDN](https://tailwindcss.com/)
-* [Lucide Icons](https://lucide.dev/)
-* Inter Font by Google Fonts
+| Column | Description |
+| :--- | :--- |
+| `Order_ID` | Merchant invoice or internal order identifier |
+| `Customer_Name` | Consignee / customer name |
+| `Courier` | Logistics partner (e.g., TCS, Leopards) |
+| `Order_Amount` | Invoiced COD amount to be collected |
+| `Courier_Settled` | Actual payout amount reported by the courier |
+| `Delivery_City` | Destination hub or delivery city |
 
 ---
 
 ## 📄 License
 
-MIT License — Feel free to use and adapt this project for your own store or portfolio.
+Distributed under the MIT License. See `LICENSE` for more information.
