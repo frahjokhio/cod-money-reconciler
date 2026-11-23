@@ -1,0 +1,11 @@
+AWB_Number,Order_ID,Customer_Name,Courier,Delivery_City,Order_Amount,Courier_Settled,Difference,Status,Delivery_Date
+TCS-89214701,#COD-1048,Ayesha Khan,TCS,Karachi,4500,1500,3000,Mismatch,2026-11-20
+LBN-33918202,#COD-1047,Ahmed Ali,Leopards,Lahore,3200,0,3200,Pending,2026-11-21
+TCS-89214703,#COD-1046,Sara Malik,TCS,Islamabad,5000,4500,500,Mismatch,2026-11-19
+LBN-33918204,#COD-1045,Bilal Shah,Leopards,Rawalpindi,2800,2800,0,Settled,2026-11-22
+TCS-89214705,#COD-1044,Hira Ahmed,TCS,Faisalabad,6000,0,6000,Pending,2026-11-21
+LBN-33918206,#COD-1043,Usman Raza,Leopards,Multan,3500,3300,200,Mismatch,2026-11-18
+TCS-89214707,#COD-1049,Zainab Bibi,TCS,Islamabad,5500,5500,0,Settled,2026-11-23
+LBN-33918208,#COD-1050,Hamza Tariq,Leopards,Peshawar,4200,4200,0,Settled,2026-11-23
+TCS-89214709,#COD-1051,Fatima Noor,TCS,Sialkot,3800,0,3800,Pending,2026-11-23
+LBN-33918210,#COD-1052,Mustafa Kamal,Leopards,Quetta,6500,6000,500,Mismatch,2026-11-23

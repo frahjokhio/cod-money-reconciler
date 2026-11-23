@@ -1,0 +1,7 @@
+AWB_Number,Order_ID,Customer_Name,Courier,COD_Expected,Settled_Amount,Difference,Status
+TCS78912301,#COD-1048,Ayesha Khan,TCS,4500,4500,0,Settled
+LBN44219082,#COD-1047,Ahmed Ali,Leopards,3200,0,3200,Pending
+TCS78912303,#COD-1046,Sara Malik,TCS,5000,4500,500,Mismatch
+LBN44219084,#COD-1045,Bilal Shah,Leopards,2800,2800,0,Settled
+TCS78912305,#COD-1044,Hira Ahmed,TCS,6000,0,6000,Pending
+LBN44219086,#COD-1043,Usman Raza,Leopards,3500,3300,200,Mismatch
